@@ -1,4 +1,5 @@
 import { Cart } from "../Models/cartModels.js";
+import { decryptData } from "../utils/commonFunction.js";
 
 const cartControllers = {
   addToCart: async (req, res) => {
@@ -81,10 +82,14 @@ const cartControllers = {
   },
   removeCartItem: async (req, res) => {
     try {
-      const {userId, shoeId} = req.body;
-      if(!userId || !shoeId) {
-        return res.status(400).json({success: false, error: "userId and shoeId is required"});
+      const encryptedUserId = req.query.userId;
+      const encryptedShoeId = req.query.shoeId;
+  
+      if (!encryptedUserId || !encryptedShoeId) {
+        return res.status(400).json({ success: false, error: "Encrypted userId and shoeId are required" });
       }
+      const userId = decryptData(encryptedUserId);
+      const shoeId = decryptData(encryptedShoeId);
       const userCart = await Cart.findOne({userId});
 
       if(!userCart) {
