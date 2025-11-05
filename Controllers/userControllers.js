@@ -63,7 +63,7 @@ const userControllers = {
         password: hashedPassword,
       };
 
-      // Handle profile image upload (if file exists)
+      // Handle profile image upload
       if (req.file) {
         const uploadResult = await new Promise((resolve, reject) => {
           const stream = cloudinary.v2.uploader.upload_stream(
@@ -73,7 +73,7 @@ const userControllers = {
               resolve(result);
             }
           );
-          stream.end(req.file.buffer); // ✅ send actual file buffer from multer.memoryStorage
+          stream.end(req.file.buffer);
         });
       
         userData.profileImageUrl = uploadResult.secure_url;
