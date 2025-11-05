@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
   {
-
     name: { type: String, required: true},
     brand: { type: String, required: true },
     gender: { type: String, enum: ["MEN", "WOMEN", "KIDS"], required: true },
@@ -13,6 +12,10 @@ const productSchema = new mongoose.Schema(
     imageURL: { type: String, required: true },
     slug: { type: String, required: true, unique: true },
     featured: { type: Number, default: 0 },
+    size: {
+      type: [String],
+      default: ["S", "M", "L", "XL"],
+    },
   },
   { timestamps: true }
 );
