@@ -27,7 +27,7 @@ connectDB();
 
 app.use(cors({
   // origin:`http://localhost:5173`,
-  origin:`https://shoecommerce-85f8.onrender.com`,
+  origin:`https://shoe-commerce-frontend.vercel.app`,
   credentials: true,
 }
 ));
