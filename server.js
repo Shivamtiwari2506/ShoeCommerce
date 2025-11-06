@@ -26,7 +26,8 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 app.use(cors({
-  origin:`http://localhost:5173`,
+  // origin:`http://localhost:5173`,
+  origin:`https://shoecommerce-85f8.onrender.com`,
   credentials: true,
 }
 ));
