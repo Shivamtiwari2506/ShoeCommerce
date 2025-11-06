@@ -6,7 +6,6 @@ const router = express.Router();
 // Refresh Access Token
 router.post("/refresh", (req, res) => {
   const refreshToken = req.cookies.refreshToken;
-  console.log('refreshToken', refreshToken);
   if (!refreshToken)
     return res.status(401).json({ message: "No refresh token found" });
 

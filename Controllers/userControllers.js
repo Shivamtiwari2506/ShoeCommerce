@@ -40,7 +40,6 @@ const userControllers = {
       const existingUser = await User.findOne({
         $or: [{ email }, { mobileNumber }],
       });
-      console.log('existingUser', existingUser)
       
       if (existingUser) {
         return res.status(400).json({
@@ -132,7 +131,6 @@ const userControllers = {
       }
   
       const { accessToken, refreshToken } = generateTokens(user._id, user.email);
-      console.log('refreshToken', refreshToken);
 
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
