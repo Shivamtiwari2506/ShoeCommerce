@@ -26,8 +26,7 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 app.use(cors({
-  // origin:`http://localhost:5173`,
-  origin:`https://shoe-commerce-frontend.vercel.app`,
+  origin: `http://localhost:5173` || process.env.CLIENT_URL,
   credentials: true,
 }
 ));
